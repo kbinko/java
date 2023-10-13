@@ -27,9 +27,12 @@ public class First2 {
             result = numerator / denominator;
         } else {
             System.out.println("Mianownik wynosi zero. Dzielenie przez zero!");
+            scanner.close();
             return;
         }
         
         System.out.println("Wynik = " + result);
+        
+        scanner.close();
     }
 }
