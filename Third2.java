@@ -1,42 +1,38 @@
 import java.util.Scanner;
 
 public class Third2 {
+    private static double a, b, c;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
-        
+        wprowadzDane(scanner);
+        rozwiazanie();
+        scanner.close();
+    }
+    
+    public static void wprowadzDane(Scanner scanner) {
         System.out.println("Podaj a:");
+        a = walidacja(scanner);
         
-        while(! scanner.hasNextDouble()) {
-            System.out.println("Niepoprawny format! Spróbuj ponownie.");
-            scanner.next(); 
-        }
-        
-        double a = scanner.nextDouble();
-
         System.out.println("Podaj b:");
-
-        while(! scanner.hasNextDouble()) {
-            System.out.println("Niepoprawny format! Spróbuj ponownie.");
-            scanner.next(); 
-        }
-
-        double b = scanner.nextDouble();
+        b = walidacja(scanner);
 
         System.out.println("Podaj c:");
+        c = walidacja(scanner);
+    }
 
-        while(! scanner.hasNextDouble()) {
+    private static double walidacja(Scanner scanner) {
+        while(!scanner.hasNextDouble()) {
             System.out.println("Niepoprawny format! Spróbuj ponownie.");
             scanner.next(); 
         }
+        return scanner.nextDouble();
+    }
 
-        double c = scanner.nextDouble();
-
-        
-        // Obliczenie delty
+    public static void rozwiazanie() {
         double delta = b * b - 4 * a * c;
         
-        // Sprawdzenie przypadków
         if (a == 0) {
             if (b == 0) {
                 if (c == 0) {
@@ -47,19 +43,19 @@ public class Third2 {
             } else {
                 double x = -c / b;
                 System.out.println("Równanie liniowe. x = " + x);
-                verifyRoot(a, b, c, x);
+                sprawdz(x);
             }
         } else {
             if (delta > 0) {
                 double x1 = (-b - Math.sqrt(delta)) / (2 * a);
                 double x2 = (-b + Math.sqrt(delta)) / (2 * a);
                 System.out.println("Dwa pierwiastki rzeczywiste: x1 = " + x1 + ", x2 = " + x2);
-                verifyRoot(a, b, c, x1);
-                verifyRoot(a, b, c, x2);
+                sprawdz(x1);
+                sprawdz(x2);
             } else if (delta == 0) {
                 double x0 = -b / (2 * a);
                 System.out.println("Jeden pierwiastek rzeczywisty: x0 = " + x0);
-                verifyRoot(a, b, c, x0);
+                sprawdz(x0);
             } else {
                 double realPart = -b / (2 * a);
                 double imaginaryPart = Math.sqrt(-delta) / (2 * a);
@@ -67,12 +63,10 @@ public class Third2 {
                 System.out.println("z2 = " + realPart + " - " + imaginaryPart + "j");
                 System.out.println("Pierwiastki są zespolone, więc nie są pierwiastkami rzeczywistymi równania kwadratowego.");
             }
-        
-            scanner.close();
         }
     }
 
-    public static void verifyRoot(double a, double b, double c, double x) {
+    public static void sprawdz(double x) {
         double result = a * x * x + b * x + c;
         if (Math.abs(result) < 1e-10) {
             System.out.println("Pierwiastek x = " + x + " jest poprawny.");

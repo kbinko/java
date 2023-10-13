@@ -9,13 +9,19 @@ public class First2 {
         double x = 0;
         boolean validInput = false;
         while(!validInput) {
-            System.out.print("Podaj wartość x: ");
-            try {
+            System.out.print("Podaj x: ");
+            if(scanner.hasNextDouble()) {
                 x = scanner.nextDouble();
                 validInput = true;
-            } catch (Exception e) {
-                System.out.println("Niepoprawny format! Spróbuj ponownie.");
-                scanner.next(); 
+            } 
+            else {
+                System.out.println("Niepoprawne dane! Podaj liczbę rzeczywistą!");
+                scanner.next();
+            }
+            if (tan(x) + log10(abs(sin(x))) + pow(PI, x) == 0) {
+                System.out.println("Mianownik wynosi zero. Dzielenie przez zero!");
+                scanner.close();
+                return;
             }
         }
         
@@ -31,7 +37,7 @@ public class First2 {
             return;
         }
         
-        System.out.println("Wynik = " + result);
+        System.out.printf("Wynik = %.4f" , result);
         
         scanner.close();
     }
