@@ -1,3 +1,4 @@
+package Lab3;
 public class Lab3z1 {
 
     public static void main(String args[]) {

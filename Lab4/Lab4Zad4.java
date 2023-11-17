@@ -1,3 +1,4 @@
+package Lab4;
 import java.math.BigInteger;
 
 public class Lab4Zad4 {

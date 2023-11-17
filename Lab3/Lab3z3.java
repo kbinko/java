@@ -1,3 +1,4 @@
+package Lab3;
 public class Lab3z3 {
     public static void main(String args[]) {
         int y[][] = new int[3][3];
