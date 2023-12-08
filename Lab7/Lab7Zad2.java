@@ -28,43 +28,37 @@ public class Lab7Zad2 {
         return kierownica;
     }
 
+    public static class Kierownica {
+        public boolean kręćWPrawo() {
+            System.out.println("Kierownica skręca w prawo.");
+            return true;
+        }
+
+        public boolean kręćWLewo() {
+            System.out.println("Kierownica skręca w lewo.");
+            return true;
+        }
+
+        public void zablokuj() {
+            System.out.println("Kierownica zablokowana.");
+        }
+
+        public void odblokuj() {
+            System.out.println("Kierownica odblokowana.");
+        }
+    }
+
     public static void main(String[] args) {
         Kierownica kierownica = new Kierownica();
-
- 
         Lab7Zad2 car = new Lab7Zad2(4, 5, kierownica);
 
         // Testowanie instrukcji
-        car.kierownica = 4; 
-        car.siedzenia = 5; 
-        car.startuj().kręćWPrawo(); 
-        car.getKierownica(); 
-        Kierownica k = car.kierownica; 
-        System.out.println(car.kręćWLewo()); 
-        System.out.println(car.zablokuj());
-        kierownica.zablokuj(); 
-        car.kierownica.kręćWLewo(); 
-        System.out.println(car.kierownica.kręćWPrawo()); 
-        a.startuj().zablokuj(); 
-    }
-}
-
-class Kierownica {
-    public boolean kręćWPrawo() {
-        System.out.println("Kierownica skręca w prawo.");
-        return true;
-    }
-
-    public boolean kręćWLewo() {
-        System.out.println("Kierownica skręca w lewo.");
-        return true;
-    }
-
-    public void zablokuj() {
-        System.out.println("Kierownica zablokowana.");
-    }
-
-    public void odblokuj() {
-        System.out.println("Kierownica odblokowana.");
+        car.siedzenia = 5;
+        car.getKierownica();
+        kierownica.zablokuj();
+        car.kierownica.kręćWLewo();
+        System.out.println(car.kierownica.kręćWPrawo());
+        car.kierownica.odblokuj();
+        car.startuj();
     }
 }
